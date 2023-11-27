@@ -1,0 +1,4 @@
+sources:
+  "1.8.5":
+    url: "https://github.com/picolibc/picolibc/releases/download/1.8.5/picolibc-1.8.5.tar.xz"
+    sha256: "01432879c9ad3211f7f4619c826d1903f3dbda2f19032d3286108f425dd7c7bc"
