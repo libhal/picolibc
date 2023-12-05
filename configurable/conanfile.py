@@ -1,6 +1,5 @@
 from conan import ConanFile
-from conan.tools.files import get, copy, download, mkdir, chdir
-from conan.errors import ConanInvalidConfiguration
+from conan.tools.files import get, copy, mkdir, chdir
 from conan.tools.meson import Meson, MesonToolchain
 import os
 
