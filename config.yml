@@ -1,7 +1,0 @@
-versions:
-  "11.3.0":
-    folder: "from_prebuilt"
-  "12.2.1":
-    folder: "from_prebuilt"
-  "12.3.1":
-    folder: "from_prebuilt"

@@ -28,6 +28,7 @@ class PrebuiltPicolibc(ConanFile):
     def validate(self):
         if (
             self.settings.compiler == "gcc" and
+            self.settings.os == "baremetal" and
             self.settings.compiler.get_safe("libc") != "picolibc"
         ):
             raise ConanInvalidConfiguration(
@@ -68,7 +69,6 @@ class PrebuiltPicolibc(ConanFile):
                 f"--picolibc-prefix={prefix}",
                 f"-oslib={str(self.options.crt0)}",
             ]
-
             self.output.info(f"link flags: {self.cpp_info.exelinkflags}")
             self.output.info(f"crt0: {str(self.options.crt0)}")
         else:

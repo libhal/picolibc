@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(test_package LANGUAGES CXX)
+project(picolibc_demo LANGUAGES CXX)
 
 find_package(prebuilt-picolibc REQUIRED)
 
-add_executable(test_package main.cpp)
-target_link_libraries(test_package picolibc)
+add_executable(picolibc_demo main.cpp)
+target_link_libraries(picolibc_demo picolibc)

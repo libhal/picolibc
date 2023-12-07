@@ -1,0 +1,15 @@
+name: 🚀 Deploy 12.3.1
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/ci.yml
+    with:
+      version: "12.3.1"
+    secrets: inherit
