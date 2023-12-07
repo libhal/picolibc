@@ -11,6 +11,7 @@ class PrebuiltPicolibc(ConanFile):
     settings = "os", "arch", "compiler", "build_type"
     package_type = "static-library"
     short_paths = True
+    build_policy = "missing"
     options = {
         "crt0": [
             "semihost",
