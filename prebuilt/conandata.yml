@@ -1,7 +1,7 @@
 sources:
-  "12.2.1":
+  "12.2":
     url: "https://github.com/picolibc/picolibc/releases/download/1.8/picolibc-1.8-12.2.rel1.zip"
     sha256: "e82d41728259edddde2fa7e3eaff1c9ffce6c317841679386e88c043cd5de5e1"
-  "12.3.1":
+  "12.3":
     url: "https://github.com/picolibc/picolibc/releases/download/1.8.3/picolibc-1.8.3-12.3-rel1.zip"
     sha256: "9263e6e7317b0e205e68a88301bde2b42fb758aa50df68251c17de2c493875f6"

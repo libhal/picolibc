@@ -58,7 +58,12 @@ class PrebuiltPicolibc(ConanFile):
         self.cpp_info.libdirs = []
         self.cpp_info.resdirs = []
 
-        specs_path = f"lib/gcc/arm-none-eabi/{self.version}/picolibcpp.specs"
+        short_to_long_version = {
+            "12.2": "12.2.1",
+            "12.3": "12.3.1",
+        }
+        long_version = short_to_long_version[self.version]
+        specs_path = f"lib/gcc/arm-none-eabi/{long_version}/picolibcpp.specs"
         prefix = os.path.join(self.package_folder, 'arm-none-eabi')
         picolibcpp_specs = os.path.join(self.package_folder, specs_path)
 

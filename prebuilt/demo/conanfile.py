@@ -7,8 +7,8 @@ class Demo(ConanFile):
     generators = "CMakeDeps", "CMakeToolchain", "VirtualBuildEnv"
     options = {
         "version": [
-            "12.2.1",
-            "12.3.1",
+            "12.2",
+            "12.3",
         ]
     }
 

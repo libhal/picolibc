@@ -1,4 +1,4 @@
-name: 🚀 Deploy 12.3.1
+name: 🚀 Deploy 12.2
 
 on:
   workflow_dispatch:
@@ -11,5 +11,5 @@ jobs:
   deploy:
     uses: ./.github/workflows/ci.yml
     with:
-      version: "12.3.1"
+      version: "12.2"
     secrets: inherit
