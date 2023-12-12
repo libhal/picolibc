@@ -1,6 +1,5 @@
 from conan import ConanFile
 from conan.tools.files import get, copy
-from conan.errors import ConanInvalidConfiguration
 import os
 
 required_conan_version = ">=2.0.6"
@@ -24,15 +23,6 @@ class PrebuiltPicolibc(ConanFile):
 
     def package_id(self):
         self.info.clear()
-
-    def validate(self):
-        if (
-            self.settings.compiler == "gcc" and
-            self.settings.os == "baremetal" and
-            self.settings.compiler.get_safe("newlib") != "picolibc"
-        ):
-            raise ConanInvalidConfiguration(
-                "settings.compiler.newlib must be set to picolibc to use this package!")
 
     def build(self):
         get(self,
@@ -67,15 +57,11 @@ class PrebuiltPicolibc(ConanFile):
         prefix = os.path.join(self.package_folder, 'arm-none-eabi')
         picolibcpp_specs = os.path.join(self.package_folder, specs_path)
 
-        newlib = self.settings.compiler.get_safe("newlib")
-        if newlib == "picolibc":
-            self.cpp_info.exelinkflags = [
-                f"-specs={picolibcpp_specs}",
-                f"--picolibc-prefix={prefix}",
-                f"-oslib={str(self.options.crt0)}",
-            ]
-            self.output.info(f"link flags: {self.cpp_info.exelinkflags}")
-            self.output.info(f"crt0: {str(self.options.crt0)}")
-        else:
-            self.output.warning(
-                f"newlib set to: '{newlib}', compiler flags not used!")
+        self.cpp_info.exelinkflags = [
+            f"-specs={picolibcpp_specs}",
+            f"--picolibc-prefix={prefix}",
+            f"-oslib={str(self.options.crt0)}",
+        ]
+
+        self.output.info(f"link flags: {self.cpp_info.exelinkflags}")
+        self.output.info(f"crt0: {str(self.options.crt0)}")

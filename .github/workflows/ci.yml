@@ -40,9 +40,15 @@ jobs:
       - name: 📦 Create Conan Package
         run: conan create prebuilt --version=${{ inputs.version }}
 
-      - name: 🏗️ Build Demo Package
+      - name: 🏗️ Build Demos Conan Package
+        if: ${{ runner.os != 'Windows' }}
         working-directory: prebuilt/demo
-        run: conan build . -o "*:version=${{ inputs.version }}" -pr profile
+        run: VERBOSE=1 conan build . -pr profile -s compiler.version="${{ inputs.version }}"
+
+      - name: 🏗️ Build Demos Conan Package
+        if: ${{ runner.os == 'Windows' }}
+        working-directory: prebuilt/demo
+        run: conan build . -pr profile -s compiler.version="${{ inputs.version }}"
 
       - name: 📡 Sign into JFrog Artifactory
         if: ${{ github.ref == 'refs/heads/main' && runner.os != 'Windows' }}
