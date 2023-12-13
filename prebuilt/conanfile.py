@@ -9,6 +9,7 @@ class PrebuiltPicolibc(ConanFile):
     name = "prebuilt-picolibc"
     settings = "os", "arch", "compiler", "build_type"
     package_type = "static-library"
+    build_policy = "missing"
     short_paths = True
     options = {
         "crt0": [
