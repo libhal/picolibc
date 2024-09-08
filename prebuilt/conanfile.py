@@ -50,6 +50,7 @@ class PrebuiltPicolibc(ConanFile):
         self.cpp_info.resdirs = []
 
         short_to_long_version = {
+            "11.3": "11.3.1",
             "12.2": "12.2.1",
             "12.3": "12.3.1",
         }
