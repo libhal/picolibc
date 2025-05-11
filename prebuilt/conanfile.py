@@ -2,7 +2,7 @@ from conan import ConanFile
 from conan.tools.files import get, copy
 import os
 
-required_conan_version = ">=2.0.6"
+required_conan_version = ">=2.16.1"
 
 
 class PrebuiltPicolibc(ConanFile):
@@ -53,6 +53,9 @@ class PrebuiltPicolibc(ConanFile):
             "11.3": "11.3.1",
             "12.2": "12.2.1",
             "12.3": "12.3.1",
+            "13.2": "13.2.1",
+            "13.3": "13.3.1",
+            "14.2": "14.2.1",
         }
         long_version = short_to_long_version[self.version]
         specs_path = f"lib/gcc/arm-none-eabi/{long_version}/picolibcpp.specs"
