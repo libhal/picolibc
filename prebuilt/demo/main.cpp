@@ -11,4 +11,5 @@ main()
 extern "C"
 {
   struct _reent* _impure_ptr = nullptr;
+  void _exit(int) {}
 }
