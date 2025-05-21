@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, macos-12, windows-2022]
+        os: [ubuntu-24.04, macos-15, windows-2022]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
 
       - name: 📥 Install Conan
-        run: pip3 install conan==2.16.1
+        run: pipx install conan==2.16.1
 
       - name: 📡 Add `libhal-trunk` conan remote
         run: |

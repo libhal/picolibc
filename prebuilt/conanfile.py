@@ -2,7 +2,7 @@ from conan import ConanFile
 from conan.tools.files import get, copy
 import os
 
-required_conan_version = ">=2.16.1"
+required_conan_version = ">=2.0.6"
 
 
 class PrebuiltPicolibc(ConanFile):
