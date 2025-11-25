@@ -1,6 +1,6 @@
 from conan import ConanFile
-from conan.tools.files import get, copy
-import os
+from conan.tools.files import get
+from pathlib import Path
 
 required_conan_version = ">=2.0.6"
 
@@ -10,7 +10,6 @@ class PrebuiltPicolibc(ConanFile):
     settings = "os", "arch", "compiler", "build_type"
     package_type = "static-library"
     build_policy = "missing"
-    short_paths = True
     options = {
         "crt0": [
             "semihost",
@@ -25,19 +24,10 @@ class PrebuiltPicolibc(ConanFile):
     def package_id(self):
         self.info.clear()
 
-    def build(self):
+    def package(self):
         get(self,
             **self.conan_data["sources"][self.version],
-            destination=self.build_folder)
-
-    def package(self):
-        destination = os.path.join(self.package_folder, "")
-        copy(self, pattern="arm-none-eabi/*", src=self.build_folder,
-             dst=destination, keep_path=True)
-        copy(self, pattern="bin/*", src=self.build_folder,
-             dst=destination, keep_path=True)
-        copy(self, pattern="lib/*", src=self.build_folder,
-             dst=destination, keep_path=True)
+            destination=self.package_folder)
 
     def package_info(self):
         self.cpp_info.set_property("cmake_target_name", "picolibc")
@@ -49,7 +39,7 @@ class PrebuiltPicolibc(ConanFile):
         self.cpp_info.libdirs = []
         self.cpp_info.resdirs = []
 
-        short_to_long_version = {
+        SHORT_TO_LONG_VERSION = {
             "11.3": "11.3.1",
             "12.2": "12.2.1",
             "12.3": "12.3.1",
@@ -57,14 +47,14 @@ class PrebuiltPicolibc(ConanFile):
             "13.3": "13.3.1",
             "14.2": "14.2.1",
         }
-        long_version = short_to_long_version[self.version]
-        specs_path = f"lib/gcc/arm-none-eabi/{long_version}/picolibcpp.specs"
-        prefix = os.path.join(self.package_folder, 'arm-none-eabi')
-        picolibcpp_specs = os.path.join(self.package_folder, specs_path)
+        LONG_VERSION = SHORT_TO_LONG_VERSION[self.version]
+        PREFIX = Path(self.package_folder) / 'arm-none-eabi'
+        PICOLIB_CPP_SPECS = Path(self.package_folder) / 'lib' / 'gcc' / \
+            'arm-none-eabi' / LONG_VERSION / 'picolibcpp.specs'
 
         self.cpp_info.exelinkflags = [
-            f"-specs={picolibcpp_specs}",
-            f"--picolibc-prefix={prefix}",
+            f"-specs={PICOLIB_CPP_SPECS}",
+            f"--picolibc-prefix={PREFIX}",
             f"-oslib={str(self.options.crt0)}",
         ]
 
