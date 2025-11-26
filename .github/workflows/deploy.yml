@@ -9,37 +9,37 @@ on:
 
 jobs:
   deploy_11_3:
-    uses: ./.github/workflows/ci.yml
+    uses: ./.github/workflows/package_and_upload.yml
     with:
       version: "11.3"
     secrets: inherit
 
   deploy_12_2:
-    uses: ./.github/workflows/ci.yml
+    uses: ./.github/workflows/package_and_upload.yml
     with:
       version: "12.2"
     secrets: inherit
 
   deploy_12_3:
-    uses: ./.github/workflows/ci.yml
+    uses: ./.github/workflows/package_and_upload.yml
     with:
       version: "12.3"
     secrets: inherit
 
   deploy_13_2:
-    uses: ./.github/workflows/ci.yml
+    uses: ./.github/workflows/package_and_upload.yml
     with:
       version: "13.2"
     secrets: inherit
 
   deploy_13_3:
-    uses: ./.github/workflows/ci.yml
+    uses: ./.github/workflows/package_and_upload.yml
     with:
       version: "13.3"
     secrets: inherit
 
   deploy_14_2:
-    uses: ./.github/workflows/ci.yml
+    uses: ./.github/workflows/package_and_upload.yml
     with:
       version: "14.2"
     secrets: inherit
