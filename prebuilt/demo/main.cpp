@@ -1,4 +1,6 @@
 #include <cstdio>
+#include <errno.h>
+#include <sys/types.h>
 
 int
 main()

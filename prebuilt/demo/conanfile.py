@@ -8,8 +8,6 @@ class Demo(ConanFile):
 
     def build_requirements(self):
         self.tool_requires("cmake/3.27.1")
-        self.tool_requires(
-            f"arm-gnu-toolchain/{self.settings.compiler.version}")
 
     def requirements(self):
         self.requires(f"prebuilt-picolibc/{self.settings.compiler.version}")
