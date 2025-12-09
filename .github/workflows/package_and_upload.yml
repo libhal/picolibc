@@ -24,20 +24,13 @@ jobs:
           fetch-depth: 0
 
       - name: 📥 Install Conan
-        run: pipx install conan==2.16.1
+        run: pipx install conan>=2.16.1
 
-      - name: 📡 Add `libhal-trunk` conan remote
-        run: |
-          conan remote add libhal-trunk https://libhal.jfrog.io/artifactory/api/conan/trunk-conan
+      - name: 📡 Install libhal conan config2
+        run: conan config install https://github.com/libhal/conan-config2.git
 
-      - name: 📡 Create and setup default profile
-        run: conan profile detect --force
-
-      - name: 👁️‍🗨️ Show conan profile
-        run: conan profile show
-
-      - name: 📡 Install libhal settings_user.yml
-        run: conan config install -sf profiles/baremetal/v2/ https://github.com/libhal/conan-config.git
+      - name: 📡 libhal setup
+        run: conan hal setup
 
       - name: 📦 Create Conan Package
         run: conan create prebuilt --version=${{ inputs.version }}
@@ -56,4 +49,4 @@ jobs:
       - name: 🆙 Upload `prebuilt-picolibc` to `libhal-trunk` repo
         if: ${{ startsWith(github.ref, 'refs/tags/') && startsWith(matrix.os, 'ubuntu-') }}
         run: |
-          conan upload "prebuilt-picolibc/*" --only-recipe --confirm -r=libhal-trunk
+          conan upload "prebuilt-picolibc/*" --only-recipe --confirm -r=libhal

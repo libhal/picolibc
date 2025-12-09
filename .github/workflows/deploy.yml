@@ -29,6 +29,12 @@ jobs:
       version: "12.3"
     secrets: inherit
 
+  deploy_12:
+    uses: ./.github/workflows/package_and_upload.yml
+    with:
+      version: "12"
+    secrets: inherit
+
   deploy_13_2:
     uses: ./.github/workflows/package_and_upload.yml
     with:
@@ -41,8 +47,20 @@ jobs:
       version: "13.3"
     secrets: inherit
 
+  deploy_13:
+    uses: ./.github/workflows/package_and_upload.yml
+    with:
+      version: "13"
+    secrets: inherit
+
   deploy_14_2:
     uses: ./.github/workflows/package_and_upload.yml
     with:
       version: "14.2"
+    secrets: inherit
+
+  deploy_14:
+    uses: ./.github/workflows/package_and_upload.yml
+    with:
+      version: "14"
     secrets: inherit

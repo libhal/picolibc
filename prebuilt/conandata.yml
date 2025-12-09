@@ -8,12 +8,21 @@ sources:
   "12.3":
     url: "https://github.com/picolibc/picolibc/releases/download/1.8.3/picolibc-1.8.3-12.3-rel1.zip"
     sha256: "9263e6e7317b0e205e68a88301bde2b42fb758aa50df68251c17de2c493875f6"
+  "12":
+    url: "https://github.com/picolibc/picolibc/releases/download/1.8.3/picolibc-1.8.3-12.3-rel1.zip"
+    sha256: "9263e6e7317b0e205e68a88301bde2b42fb758aa50df68251c17de2c493875f6"
   "13.2":
     url: "https://github.com/picolibc/picolibc/releases/download/1.8.6/picolibc-1.8.6-13.2.Rel1.zip"
     sha256: "9658c58307000de6d9998b29904b1316196eadc4b31a7fe8f9bdefa0c8325bb6"
   "13.3":
     url: "https://github.com/picolibc/picolibc/releases/download/1.8.8/picolibc-1.8.8-13.3.rel1.zip"
     sha256: "a298cabc310e992399824ae48e275f49603ba1c5f3c040acb116e54146b70995"
+  "13":
+    url: "https://github.com/picolibc/picolibc/releases/download/1.8.8/picolibc-1.8.8-13.3.rel1.zip"
+    sha256: "a298cabc310e992399824ae48e275f49603ba1c5f3c040acb116e54146b70995"
   "14.2":
+    url: "https://github.com/picolibc/picolibc/releases/download/1.8.10/picolibc-1.8.10-14.2.rel1.zip"
+    sha256: "a5d0e5be0cd5e7b0e47a229a49f58d9b258a7012c3402751711d71415a645f99"
+  "14":
     url: "https://github.com/picolibc/picolibc/releases/download/1.8.10/picolibc-1.8.10-14.2.rel1.zip"
     sha256: "a5d0e5be0cd5e7b0e47a229a49f58d9b258a7012c3402751711d71415a645f99"
