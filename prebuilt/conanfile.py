@@ -1,11 +1,12 @@
 from conan import ConanFile
+from conan.errors import ConanInvalidConfiguration
 from conan.tools.files import get
 from pathlib import Path
 
 required_conan_version = ">=2.0.6"
 
 
-class PrebuiltPicolibc(ConanFile):
+class PrebuiltGccPicolibc(ConanFile):
     name = "prebuilt-picolibc"
     settings = "os", "arch", "compiler", "build_type"
     package_type = "static-library"
@@ -20,6 +21,11 @@ class PrebuiltPicolibc(ConanFile):
     default_options = {
         "crt0": "semihost",
     }
+
+    def validate(self):
+        if self.settings.compiler != "gcc":
+            raise ConanInvalidConfiguration(
+                "This package only works with GCC compiler")
 
     def package_id(self):
         self.info.clear()
@@ -43,10 +49,14 @@ class PrebuiltPicolibc(ConanFile):
             "11.3": "11.3.1",
             "12.2": "12.2.1",
             "12.3": "12.3.1",
+            "12":   "12.3.1",
             "13.2": "13.2.1",
             "13.3": "13.3.1",
+            "13": "13.3.1",
             "14.2": "14.2.1",
+            "14":   "14.2.1",
         }
+
         LONG_VERSION = SHORT_TO_LONG_VERSION[self.version]
         PREFIX = Path(self.package_folder) / 'arm-none-eabi'
         PICOLIB_CPP_SPECS = Path(self.package_folder) / 'lib' / 'gcc' / \
