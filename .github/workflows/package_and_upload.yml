@@ -33,7 +33,7 @@ jobs:
         run: conan hal setup
 
       - name: 📦 Create Conan Package
-        run: conan create prebuilt --version=${{ inputs.version }}
+        run: conan create prebuilt --version=${{ inputs.version }} -s compiler=gcc -s compiler.version=${{ inputs.version }}
 
       - name: 🏗️ Build Demos Conan Package
         working-directory: prebuilt/demo
