@@ -65,7 +65,7 @@ class PrebuiltGccPicolibc(ConanFile):
         self.cpp_info.exelinkflags = [
             f"-specs={PICOLIB_CPP_SPECS}",
             f"--picolibc-prefix={PREFIX}",
-            f"-oslib={str(self.options.crt0)}",
+            f"--oslib={str(self.options.crt0)}",
         ]
 
         self.output.info(f"link flags: {self.cpp_info.exelinkflags}")
