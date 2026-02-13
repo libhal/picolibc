@@ -12,14 +12,21 @@ class PrebuiltGccPicolibc(ConanFile):
     package_type = "static-library"
     build_policy = "missing"
     options = {
+        "oslib": [
+            None,
+            "semihost",
+        ],
         "crt0": [
+            "default",
+            "none",
             "semihost",
             "hosted",
             "minimal",
         ]
     }
     default_options = {
-        "crt0": "semihost",
+        "oslib": None,
+        "crt0": "default",
     }
 
     def validate(self):
@@ -62,11 +69,17 @@ class PrebuiltGccPicolibc(ConanFile):
         PICOLIB_CPP_SPECS = Path(self.package_folder) / 'lib' / 'gcc' / \
             'arm-none-eabi' / LONG_VERSION / 'picolibcpp.specs'
 
-        self.cpp_info.exelinkflags = [
+        flags = [
             f"-specs={PICOLIB_CPP_SPECS}",
             f"--picolibc-prefix={PREFIX}",
-            f"--oslib={str(self.options.crt0)}",
+            f"--oslib={str(self.options.oslib)}",
         ]
+        if not self.options.crt0 == "default":
+            flags += f"--crt0={str(self.options.crt0)}"
+
+        self.cpp_info.exelinkflags = flags
+        self.cpp_info.cppflags = flags
+        self.cpp_info.cflags = flags
 
         self.output.info(f"link flags: {self.cpp_info.exelinkflags}")
         self.output.info(f"crt0: {str(self.options.crt0)}")
