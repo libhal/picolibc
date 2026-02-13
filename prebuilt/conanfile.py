@@ -74,10 +74,10 @@ class PrebuiltGccPicolibc(ConanFile):
             f"--picolibc-prefix={PREFIX}",
          
         ]
-        if self.options.oslib is not None:
-            flags += f"--oslib={str(self.options.oslib)}"
+        if self.options.oslib.value is not None:
+            flags += [f"--oslib={str(self.options.oslib)}"]
         if not self.options.crt0 == "default":
-            flags += f"--crt0={str(self.options.crt0)}"
+            flags += [f"--crt0={str(self.options.crt0)}"]
 
         self.cpp_info.exelinkflags = flags
         self.cpp_info.cppflags = flags
