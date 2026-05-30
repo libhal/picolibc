@@ -10,6 +10,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy_11_3:
     uses: ./.github/workflows/package_and_upload.yml
@@ -63,4 +67,10 @@ jobs:
     uses: ./.github/workflows/package_and_upload.yml
     with:
       version: "14"
+    secrets: inherit
+
+  deploy_15:
+    uses: ./.github/workflows/package_and_upload.yml
+    with:
+      version: "15"
     secrets: inherit

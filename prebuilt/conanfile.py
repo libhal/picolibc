@@ -62,6 +62,7 @@ class PrebuiltGccPicolibc(ConanFile):
             "13": "13.3.1",
             "14.2": "14.2.1",
             "14":   "14.2.1",
+            "15":   "15.2.1",
         }
 
         LONG_VERSION = SHORT_TO_LONG_VERSION[self.version]
@@ -72,7 +73,7 @@ class PrebuiltGccPicolibc(ConanFile):
         flags = [
             f"-specs={PICOLIB_CPP_SPECS}",
             f"--picolibc-prefix={PREFIX}",
-         
+
         ]
         if self.options.oslib.value is not None:
             flags += [f"--oslib={str(self.options.oslib)}"]

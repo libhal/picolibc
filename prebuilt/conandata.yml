@@ -26,3 +26,6 @@ sources:
   "14":
     url: "https://github.com/picolibc/picolibc/releases/download/1.8.10/picolibc-1.8.10-14.2.rel1.zip"
     sha256: "a5d0e5be0cd5e7b0e47a229a49f58d9b258a7012c3402751711d71415a645f99"
+  "15":
+    url: "https://github.com/picolibc/picolibc/releases/download/1.8.11/picolibc-arm-none-eabi-1.8.11-15.2.rel1.zip"
+    sha256: "0309f1d3ac6763840600fd8a4a36b6b502123d0c3efe2009bc41cabd1e41c072"
